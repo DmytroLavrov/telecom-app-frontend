@@ -1,0 +1,155 @@
+@use "../../styles/mixins" as *;
+
+.calls {
+  &__title {
+    padding-block: 14px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    div {
+      display: flex;
+      gap: 20px;
+
+      @include media-lg {
+        justify-content: space-between;
+        align-items: end;
+      }
+    }
+
+    @include media-lg {
+      flex-direction: column;
+    }
+  }
+
+  &__option {
+    background-color: var(--charcoal);
+  }
+  &__delete {
+    width: 20px;
+    height: 20px;
+    color: var(--blaze);
+    vertical-align: sub;
+
+    mat-icon {
+      width: auto;
+      height: auto;
+      font-size: 20px;
+    }
+
+    @include media-md {
+      width: 18px;
+      height: 18px;
+
+      mat-icon {
+        font-size: 18px;
+      }
+    }
+
+    @include media-sm {
+      width: 24px;
+      height: 24px;
+
+      mat-icon {
+        font-size: 24px;
+      }
+    }
+  }
+
+  // desktop
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+    background-color: var(--charcoal);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    font-size: clamp(14px, 0.775rem + 0.25vw, 16px);
+
+    th,
+    td {
+      padding: clamp(5px, 0.063rem + 0.63vw, 10px);
+      text-align: center;
+      border-bottom: 1px solid var(--charcoal);
+    }
+
+    th {
+      background-color: var(--lavender);
+      color: var(--white);
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    @include media-sm {
+      display: none;
+    }
+  }
+
+  // tablet/mobile
+  &__list {
+    display: none;
+
+    @include media-sm {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+  }
+
+  &__item {
+    padding: 12px;
+    border-bottom: 1px solid var(--charcoal);
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--charcoal);
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @include media-xs {
+      font-size: 14px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 5px;
+    padding: 6px 0;
+  }
+
+  &__label {
+    color: var(--lavender);
+    font-weight: bold;
+    max-width: 110px;
+    overflow: hidden;
+    word-break: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__value {
+    color: var(--white);
+    font-weight: 500;
+    max-width: 180px;
+    overflow: hidden;
+    word-break: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__empty {
+    text-align: center;
+    color: var(--white);
+    padding: 10px;
+  }
+}

@@ -1,0 +1,126 @@
+@use "../../styles/mixins" as *;
+
+.add-call {
+  @include scrollable;
+
+  width: 500px;
+
+  max-height: 80vh;
+  overflow-y: auto;
+
+  @include media-md {
+    width: 400px;
+  }
+
+  @include media-sm {
+    width: auto;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__field {
+    margin-bottom: 20px;
+  }
+
+  &__label {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--add-call-text);
+    margin-bottom: 5px;
+  }
+
+  &__input {
+    &[type="date"]::-webkit-calendar-picker-indicator {
+      color-scheme: dark;
+      cursor: pointer;
+    }
+  }
+
+  &__error {
+    color: var(--blaze);
+    font-size: 0.875rem;
+    margin-top: 5px;
+  }
+
+  &__input.ng-invalid.ng-touched + &__error {
+    display: block;
+  }
+
+  &__time-input {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+
+  &__time {
+    @include input-number;
+
+    width: 30%;
+    text-align: center;
+
+    &.ng-invalid.ng-touched {
+      border: 1px solid var(--blaze);
+      border-radius: 5px;
+      box-shadow: 0 0 5px var(--blaze);
+    }
+
+    @include media-md {
+      font-size: 0.9rem;
+    }
+
+    @include media-xs {
+      font-size: 0.85rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__btn {
+    &--submit {
+      background-color: var(--emerald);
+    }
+
+    &--cancel {
+      background-color: var(--blaze);
+    }
+  }
+}
+
+::ng-deep .mat-mdc-dialog-surface {
+  background-color: transparent;
+  border-radius: inherit;
+}
+
+::ng-deep .mat-mdc-autocomplete-panel {
+  &.custom-autocomplete-panel {
+    @include scrollable;
+    padding: 0;
+    box-shadow: none;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+}
+
+.mat-mdc-option.mdc-list-item {
+  background-color: var(--black);
+
+  @include media-md {
+    font-size: 0.9rem;
+  }
+
+  @include media-xs {
+    font-size: 0.85rem;
+  }
+
+  &:hover {
+    background-color: var(--silver-mist);
+  }
+}
+.mat-mdc-option.mdc-list-item--selected {
+  background-color: var(--black) !important;
+}
