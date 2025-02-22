@@ -1,1 +1,35 @@
-<p>subscribers works!</p>
+<section class="subscribers">
+  <div class="subscribers__header">
+    <h1 class="subscribers__title title-1">Subscribers</h1>
+
+    <div class="subscribers__buttons">
+      <input
+        type="text"
+        class="subscribers__search search"
+        placeholder="Search subscriber..."
+        (input)="onSearch($event)"
+      />
+      <button class="subscribers__add btn" (click)="openAddSubscriberDialog()">
+        + Add
+      </button>
+    </div>
+  </div>
+
+  @if (!isLoading()) {
+  <ul class="subscribers__list">
+    @for (subscriber of filteredSubscribers(); track subscriber._id) {
+    <app-subscriber-card
+      [subscriber]="subscriber"
+      (subscriberDeleted)="onSubscriberDeleted($event)"
+      (subscriberUpdated)="onSubscriberUpdated($event)"
+    />
+    } @empty {
+    <span class="subscribers__empty">Subscribers not found</span>
+    }
+  </ul>
+  } @else {
+  <div class="loading">
+    <mat-spinner class="custom-spinner" />
+  </div>
+  }
+</section>

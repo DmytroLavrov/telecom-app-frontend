@@ -1,0 +1,31 @@
+@use "../../styles/mixins" as *;
+
+.subscribers {
+  &__title {
+    padding-block: 14px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 14px;
+
+    @include media-xl {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include media-lg {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-xs {
+      grid-template-columns: 1fr;
+    }
+  }
+}

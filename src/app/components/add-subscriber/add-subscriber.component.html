@@ -1,0 +1,76 @@
+<div class="add-subscriber dialog">
+  <h2 class="add-subscriber__title title-2">Add Subscriber</h2>
+
+  <form
+    class="add-subscriber__form"
+    [formGroup]="subscriberForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="add-subscriber__field">
+      <label class="add-subscriber__label" for="phoneNumber"
+        >Phone Number</label
+      >
+      <input
+        class="add-subscriber__input input"
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        type="text"
+        placeholder="Enter phone number"
+      />
+      @if (subscriberForm.controls['phoneNumber'].invalid &&
+      subscriberForm.controls['phoneNumber'].touched) {
+      <span class="add-subscriber__error"
+        >Please enter a valid phone number (10 digits)</span
+      >
+      }
+    </div>
+
+    <div class="add-subscriber__field">
+      <label class="add-subscriber__label" for="edrpou">EDRPOU</label>
+      <input
+        class="add-subscriber__input input"
+        id="edrpou"
+        formControlName="edrpou"
+        type="text"
+        placeholder="Enter EDRPOU"
+      />
+      @if (subscriberForm.controls['edrpou'].invalid &&
+      subscriberForm.controls['edrpou'].touched) {
+      <span class="add-subscriber__error">EDRPOU must be exactly 8 digits</span>
+      }
+    </div>
+
+    <div class="add-subscriber__field">
+      <label class="add-subscriber__label" for="address">Address</label>
+      <input
+        class="add-subscriber__input input"
+        id="address"
+        formControlName="address"
+        type="text"
+        placeholder="Enter address"
+      />
+      @if (subscriberForm.controls['address'].invalid &&
+      subscriberForm.controls['address'].touched) {
+      <span class="add-subscriber__error"
+        >Address must be at least 5 characters long</span
+      >
+      }
+    </div>
+
+    <div class="add-subscriber__buttons">
+      <button
+        class="add-subscriber__btn add-subscriber__btn--submit btn"
+        type="submit"
+      >
+        Create
+      </button>
+      <button
+        class="add-subscriber__btn add-subscriber__btn--cancel btn"
+        type="button"
+        (click)="closeDialog()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

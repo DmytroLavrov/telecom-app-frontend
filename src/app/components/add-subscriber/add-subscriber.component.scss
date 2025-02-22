@@ -1,0 +1,54 @@
+@use "../../styles/mixins" as *;
+
+.add-subscriber {
+  @include scrollable;
+
+  max-height: 80vh;
+  overflow-y: auto;
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__field {
+    margin-bottom: 20px;
+  }
+
+  &__label {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--add-subscriber-text);
+    margin-bottom: 5px;
+  }
+
+  &__error {
+    color: var(--blaze);
+    font-size: 0.875rem;
+    margin-top: 5px;
+    display: none;
+  }
+
+  &__input.ng-invalid.ng-touched + &__error {
+    display: block;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__btn {
+    &--submit {
+      background-color: var(--emerald);
+    }
+
+    &--cancel {
+      background-color: var(--blaze);
+    }
+  }
+}
+
+::ng-deep .mat-mdc-dialog-surface {
+  background-color: transparent;
+  border-radius: inherit;
+}
