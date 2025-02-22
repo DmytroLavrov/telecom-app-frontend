@@ -31,7 +31,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatAutocompleteModule,
     MatInputModule,
     MatFormFieldModule,
-    ScrollingModule
+    ScrollingModule,
   ],
   templateUrl: './add-call.component.html',
   styleUrls: ['./add-call.component.scss'],
@@ -231,15 +231,13 @@ export class AddCallComponent {
     const newCall: INewCall = {
       subscriber: formValue.subscriber._id,
       city: formValue.city._id,
-      date: new Date(
-        `${formValue.startDate}T${[
-          formValue.startHour,
-          formValue.startMinute,
-          formValue.startSecond,
-        ]
-          .map((n) => String(n).padStart(2, '0'))
-          .join(':')}`
-      ).getTime(),
+      date: `${formValue.startDate}T${[
+        formValue.startHour,
+        formValue.startMinute,
+        formValue.startSecond,
+      ]
+        .map((n) => String(n).padStart(2, '0'))
+        .join(':')}`,
       duration: this.calculateDuration(),
     };
 
