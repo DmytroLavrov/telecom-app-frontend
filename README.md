@@ -4,7 +4,7 @@ Telecom App is a **web application** designed for automating the accounting of l
 
 ## 🌟 Live Demo
 
-Check out the live demo of the application here: [**Telecom App - Frontend**](telecom-app-frontend.vercel.app)
+Check out the live demo of the application here: [**Telecom App - Frontend**](https://telecom-app-frontend.vercel.app/)
 
 Ось як можна доповнити ваш текст, включивши інформацію про дані для авторизації:
 
