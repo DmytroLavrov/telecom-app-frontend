@@ -1,1 +1,78 @@
-<p>subscriber-details works!</p>
+<section class="subscriber">
+  <h1 class="subscriber__title title-1">Subscriber Details</h1>
+
+  @if (!isLoading()) {
+  <div class="subscriber__card">
+    <h3>
+      {{ subscriber()?.subscriber?.phoneNumber || "" | phoneNumberFormat }}
+    </h3>
+    <p><strong>EDRPOU:</strong> {{ subscriber()?.subscriber?.edrpou }}</p>
+    <p><strong>Address:</strong> {{ subscriber()?.subscriber?.address }}</p>
+  </div>
+
+  <h2 class="subscriber__calls-title">Call History</h2>
+
+  @if ( subscriber()?.calls!.length > 0) {
+  <!-- desktop -->
+  <table class="subscriber__table">
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Duration</th>
+        <th>Time of Day</th>
+        <th>Cost</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (call of subscriber()?.calls; track call._id) {
+      <tr>
+        <td>{{ call.city }}</td>
+        <td>{{ call.duration | durationFormat }}</td>
+        <td>{{ call.timeOfDay }}</td>
+        <td>{{ (call.cost / 100).toFixed(2) | currency }}</td>
+        <td>{{ call.date | date }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <!-- tablet/mobile -->
+  <div class="subscriber__list">
+    @for (call of subscriber()?.calls; track call._id) {
+    <div class="subscriber__item">
+      <div class="subscriber__row">
+        <div class="subscriber__label">City:</div>
+        <div class="subscriber__value">{{ call.city }}</div>
+      </div>
+      <div class="subscriber__row">
+        <div class="subscriber__label">Duration:</div>
+        <div class="subscriber__value">
+          {{ call.duration | durationFormat }}
+        </div>
+      </div>
+      <div class="subscriber__row">
+        <div class="subscriber__label">Time:</div>
+        <div class="subscriber__value">{{ call.timeOfDay }}</div>
+      </div>
+      <div class="subscriber__row">
+        <div class="subscriber__label">Cost:</div>
+        <div class="subscriber__value">
+          {{ (call.cost / 100).toFixed(2) | currency }}
+        </div>
+      </div>
+      <div class="subscriber__row">
+        <div class="subscriber__label">Date:</div>
+        <div class="subscriber__value">{{ call.date | date }}</div>
+      </div>
+    </div>
+    }
+  </div>
+  } @else {
+  <div class="subscriber__empty">No calls found</div>
+  } } @else {
+  <div class="loading">
+    <mat-spinner class="custom-spinner" />
+  </div>
+  }
+</section>
