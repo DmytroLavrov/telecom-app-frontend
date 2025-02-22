@@ -1,0 +1,185 @@
+<div class="add-call dialog" cdkScrollable>
+  <h2 class="add-call__title title-2">Add Call</h2>
+
+  <form class="add-call__form" [formGroup]="callForm" (ngSubmit)="onSubmit()">
+    <div class="add-call__field">
+      <label class="add-call__label" for="subscriber">Subscriber</label>
+      <input
+        type="text"
+        id="subscriber"
+        formControlName="subscriber"
+        [matAutocomplete]="autoSubscriber"
+        class="add-call__input input"
+        placeholder="Select subscriber"
+        required
+      />
+      <mat-autocomplete
+        #autoSubscriber="matAutocomplete"
+        [displayWith]="displayFn"
+        class="custom-autocomplete-panel"
+      >
+        @for (subscriber of filteredSubscribers(); track subscriber._id) {
+        <mat-option [value]="subscriber">
+          {{ subscriber.phoneNumber | phoneNumberFormat }}
+        </mat-option>
+        }
+      </mat-autocomplete>
+      @if (callForm.controls['subscriber'].invalid &&
+      callForm.controls['subscriber'].touched) {
+      <span class="add-call__error">Subscriber is required</span>
+      }
+    </div>
+
+    <div class="add-call__field">
+      <label class="add-call__label" for="city">City</label>
+      <input
+        type="text"
+        id="city"
+        formControlName="city"
+        [matAutocomplete]="autoCity"
+        class="add-call__input input"
+        placeholder="Select city"
+        required
+      />
+      <mat-autocomplete
+        #autoCity="matAutocomplete"
+        [displayWith]="displayFnCity"
+        class="custom-autocomplete-panel"
+      >
+        @for (city of filteredCities(); track city._id) {
+        <mat-option [value]="city">
+          {{ city.name }}
+        </mat-option>
+        }
+      </mat-autocomplete>
+      @if (callForm.controls['city'].invalid &&
+      callForm.controls['city'].touched) {
+      <span class="add-call__error">City is required</span>
+      }
+    </div>
+    <div class="add-call__field">
+      <label class="add-call__label" for="startDate">Start Date</label>
+      <input
+        class="add-call__input input"
+        id="startDate"
+        type="date"
+        formControlName="startDate"
+        required
+      />
+      @if (callForm.controls['startDate'].invalid &&
+      callForm.controls['startDate'].touched) {
+      <span class="add-call__error">Start Date is required</span>
+      }
+    </div>
+
+    <div class="add-call__field">
+      <label class="add-call__label" for="endDate">End Date</label>
+      <input
+        class="add-call__input input"
+        id="endDate"
+        type="date"
+        formControlName="endDate"
+        required
+      />
+      @if (callForm.controls['endDate'].invalid &&
+      callForm.controls['endDate'].touched) {
+      <span class="add-call__error">End Date is required</span>
+      }
+    </div>
+
+    <div class="add-call__field">
+      <label class="add-call__label">Start Time</label>
+      <div class="add-call__time-input">
+        <input
+          class="add-call__time"
+          type="number"
+          formControlName="startHour"
+          min="0"
+          max="23"
+          placeholder="HH"
+          (input)="validateTimeInput($event, 23)"
+          (blur)="formatTime($event)"
+          required
+        />
+        <span>:</span>
+        <input
+          class="add-call__time"
+          type="number"
+          formControlName="startMinute"
+          min="0"
+          max="59"
+          placeholder="MM"
+          (input)="validateTimeInput($event, 59)"
+          (blur)="formatTime($event)"
+          required
+        />
+        <span>:</span>
+        <input
+          class="add-call__time"
+          type="number"
+          formControlName="startSecond"
+          min="0"
+          max="59"
+          placeholder="SS"
+          (input)="validateTimeInput($event, 5959)"
+          (blur)="formatTime($event)"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="add-call__field">
+      <label class="add-call__label">End Time</label>
+      <div class="add-call__time-input">
+        <input
+          class="add-call__time"
+          type="number"
+          formControlName="endHour"
+          min="0"
+          max="23"
+          placeholder="HH"
+          (input)="validateTimeInput($event, 23)"
+          (blur)="formatTime($event)"
+          required
+        />
+        <span>:</span>
+        <input
+          class="add-call__time"
+          type="number"
+          formControlName="endMinute"
+          min="0"
+          max="59"
+          placeholder="MM"
+          (input)="validateTimeInput($event, 59)"
+          (blur)="formatTime($event)"
+          required
+        />
+        <span>:</span>
+        <input
+          class="add-call__time"
+          type="number"
+          formControlName="endSecond"
+          min="0"
+          max="59"
+          placeholder="SS"
+          (input)="validateTimeInput($event, 59)"
+          (blur)="formatTime($event)"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="add-call__buttons">
+      <button class="add-call__btn add-call__btn--submit btn" type="submit">
+        Save
+      </button>
+      <button
+        class="add-call__btn add-call__btn--cancel btn"
+        type="button"
+        (click)="close()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
