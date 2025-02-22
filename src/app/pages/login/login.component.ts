@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
+import { SnackbarService } from '../../services/snackbar.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ITokenResponse } from '../../interfaces/admin';
 
@@ -20,6 +21,7 @@ import { ITokenResponse } from '../../interfaces/admin';
 export class LoginComponent {
   private adminService = inject(AdminService);
   private router = inject(Router);
+  private snackbarService = inject(SnackbarService);
   private destroyRef = inject(DestroyRef);
 
   form = new FormGroup({
@@ -45,9 +47,14 @@ export class LoginComponent {
       .subscribe({
         next: (response: ITokenResponse) => {
           this.router.navigate(['']);
+          this.snackbarService.showMessage('Login successful!', 'success');
         },
         error: (err) => {
           console.error('Request error:', err.message);
+          this.snackbarService.showMessage(
+            'Incorrect email or password.',
+            'error'
+          );
         },
       });
 
