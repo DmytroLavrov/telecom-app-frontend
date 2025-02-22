@@ -1,0 +1,143 @@
+@use "../../styles/mixins" as *;
+
+:host {
+  background-color: var(--sidebar-bg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  margin: 10px;
+  border-radius: 5px;
+  height: 100vh;
+  max-height: 1000px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 20px;
+
+  width: 224px;
+  transition: width 0.3s ease-in-out;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 40px;
+    cursor: pointer;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    overflow: hidden;
+  }
+
+  &__logo-icon {
+    min-width: 40px;
+    height: 40px;
+
+    img {
+      min-width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__logo-text {
+    font-size: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  &__toggle {
+    position: absolute;
+    right: -32px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+
+    mat-icon {
+      width: auto;
+      height: auto;
+      font-size: 20px;
+    }
+
+    @include media-md {
+      display: none;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
+  }
+
+  &__menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    padding-block: 10px;
+    font-size: 18px;
+    color: var(--sidebar-text);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &.selected::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 100%;
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: var(--accent);
+    }
+
+    &:hover {
+      transform: translateX(5px);
+    }
+
+    &--logout {
+      margin-top: auto;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--accent);
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &__menu-icon {
+    font-size: 24px;
+  }
+
+  &__menu-text {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.sidebar.closed {
+  width: 80px;
+  transition: width 0.3s ease-in-out;
+
+  .sidebar__logo-text {
+    display: none;
+  }
+
+  .sidebar__menu-item {
+    justify-content: center;
+  }
+
+  .sidebar__menu-text {
+    display: none;
+  }
+}

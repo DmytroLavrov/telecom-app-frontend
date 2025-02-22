@@ -1,0 +1,52 @@
+@use "../../styles/mixins" as *;
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--black);
+  padding-inline: 10px;
+}
+
+.login {
+  background-color: var(--login-bg);
+  color: var(--login-text);
+  padding: clamp(25px, 1.431rem + 0.49vw, 30px);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--white);
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__field {
+    margin-bottom: 20px;
+  }
+
+  &__label {
+    display: inline-block;
+    margin-bottom: 5px;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  &__error {
+    color: var(--blaze);
+    font-size: 0.875rem;
+    margin-top: 5px;
+    display: none;
+  }
+
+  &__input.ng-invalid.ng-touched + &__error {
+    display: block;
+  }
+}

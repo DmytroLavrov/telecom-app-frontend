@@ -1,0 +1,20 @@
+@use "../../styles/mixins" as *;
+
+:host {
+  display: flex;
+  min-height: 100vh;
+
+  @include media-sm {
+    position: relative;
+    flex-direction: column;
+  }
+}
+
+.main {
+  flex-grow: 1;
+  margin: 10px 20px;
+
+  @include media-sm {
+    margin: 80px 10px 90px;
+  }
+}

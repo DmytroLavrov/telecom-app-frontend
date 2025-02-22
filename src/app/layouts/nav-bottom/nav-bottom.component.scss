@@ -1,0 +1,39 @@
+:host {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.nav-bottom {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--nav-bottom-bg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  &__menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: var(--nav-bottom-text);
+
+    transition: color 0.2s ease;
+
+    &.selected {
+      color: var(--accent);
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

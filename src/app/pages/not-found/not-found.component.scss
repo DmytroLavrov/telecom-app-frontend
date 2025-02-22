@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: var(--not-found-bg);
+  color: var(--not-found-text);
+}
+
+.not-found {
+  &__title {
+    font-size: 96px;
+    line-height: 102px;
+    color: var(--blaze);
+  }
+
+  &__message {
+    font-size: 24px;
+    color: white;
+    margin: 10px 0 20px 0;
+  }
+}

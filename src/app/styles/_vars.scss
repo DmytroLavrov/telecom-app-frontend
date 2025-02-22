@@ -1,0 +1,70 @@
+:root {
+  /* container settings */
+  --container-width: 1370px;
+  --container-padding: 15px;
+
+  /* font settings */
+  --font-main: "Poppins", sans-serif;
+
+  /* colors */
+  --black: #171718;
+  --charcoal: #26292d;
+  --white: #fff;
+  --lavender: #5c62ec;
+  --blaze: #e64a19;
+  --emerald: #4caf50;
+
+  /* hover effects */
+  --frosted-glass: rgba(255, 255, 255, 0.05);
+  --silver-mist: #d3d3d3;
+  --indigo: #4a50cc;
+  --vermilion: #c63d15;
+
+  /* base theme settings */
+  --page-bg: var(--black);
+  --text-color: var(--white);
+  --input-color: var(--white);
+  --accent: var(--lavender);
+
+  /* layout */
+  --sidebar-bg: var(--charcoal);
+  --sidebar-text: var(--white);
+
+  --header-bg: var(--black);
+  --header-text: var(--white);
+
+  --nav-bottom-bg: var(--charcoal);
+  --nav-bottom-text: var(--white);
+
+  /* pages */
+  --login-bg: var(--charcoal);
+  --login-text: var(--white);
+
+  /* components */
+  --card-bg: var(--charcoal);
+  --card-text: var(--white);
+
+  --dialog-bg: var(--charcoal);
+  --dialog-text: var(--white);
+
+  --add-subscriber-bg: var(--charcoal);
+  --add-subscriber-text: var(--white);
+
+  --edit-subscriber-bg: var(--charcoal);
+  --edit-subscriber-text: var(--white);
+
+  --edit-subscriber-bg: var(--charcoal);
+  --edit-subscriber-text: var(--white);
+
+  --add-city-bg: var(--charcoal);
+  --add-city-text: var(--white);
+
+  --edit-city-bg: var(--charcoal);
+  --edit-city-text: var(--white);
+
+  --add-call-bg: var(--charcoal);
+  --add-call-text: var(--white);
+
+  --not-found-bg: var(--charcoal);
+  --not-found-text: var(--white);
+}
