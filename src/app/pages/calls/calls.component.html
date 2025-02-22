@@ -8,19 +8,25 @@
       (input)="onSearch($event)"
     />
     <div>
-      <select class="calls__sort select" (change)="onFilterChange($event)">
-        <option class="calls__option" value="all">All Calls</option>
-        <option class="calls__option" value="newest">Newest First</option>
-        <option class="calls__option" value="oldest">Oldest First</option>
-        <option class="calls__option" value="longest">Longest Duration</option>
-        <option class="calls__option" value="shortest">
-          Shortest Duration
-        </option>
-        <option class="calls__option" value="most_expensive">
-          Most Expensive
-        </option>
-        <option class="calls__option" value="cheapest">Least Expensive</option>
-      </select>
+      <div class="select-wrapper">
+        <select class="calls__sort select" (change)="onFilterChange($event)">
+          <option class="calls__option" value="all">All Calls</option>
+          <option class="calls__option" value="newest">Newest First</option>
+          <option class="calls__option" value="oldest">Oldest First</option>
+          <option class="calls__option" value="longest">
+            Longest Duration
+          </option>
+          <option class="calls__option" value="shortest">
+            Shortest Duration
+          </option>
+          <option class="calls__option" value="most_expensive">
+            Most Expensive
+          </option>
+          <option class="calls__option" value="cheapest">
+            Least Expensive
+          </option>
+        </select>
+      </div>
       <button class="calls__add btn" (click)="openAddCallDialog()">
         + Add
       </button>
