@@ -1,0 +1,34 @@
+.confirmation-dialog {
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__content {
+    margin-bottom: 1.5rem;
+  }
+
+  &__message {
+    font-size: clamp(0.875rem, 0.775rem + 0.25vw, 1rem);
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  &__button {
+    &--delete {
+      background-color: var(--blaze);
+
+      &:hover {
+        background-color: var(--vermilion);
+      }
+    }
+  }
+}
+
+::ng-deep .mat-mdc-dialog-surface {
+  background-color: transparent;
+  border-radius: inherit;
+}
