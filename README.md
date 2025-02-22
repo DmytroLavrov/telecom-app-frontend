@@ -1,59 +1,75 @@
-# TelecomAppFrontend
+# Telecom App - Frontend 💻
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+Telecom App is a **web application** designed for automating the accounting of long-distance phone calls. It allows companies to manage subscribers, city-specific tariffs, and call history through a user-friendly interface.
 
-## Development server
+## 🌟 Live Demo
 
-To start a local development server, run:
+Check out the live demo of the application here: [**Telecom App - Frontend**](https://telecom-app-frontend.onrender.com/)
 
-```bash
-ng serve
-```
+Ось як можна доповнити ваш текст, включивши інформацію про дані для авторизації:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+To log in and access the demo, use the following **admin credentials**:
 
-## Code scaffolding
+- **Email**: admin@telecomapp.com
+- **Password**: admin12345
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+These credentials will grant you access to the application for demonstration purposes.
 
-```bash
-ng generate component component-name
-```
+## 🔥 Functionality
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- 🔑 **Authentication & Authorization**: Secure login with admin credentials to access the main application page.
+- 📋 **Subscriber Management**: View, add, edit, and delete subscriber details like phone number and address.
+- 🌆 **City Management**: Manage cities and tariffs, including viewing, adding, editing, and deleting cities with their respective day/night rates and discounts.
+- 📞 **Call History**: Track and manage call logs, including manually adding new calls, calculating costs, and applying dynamic discounts based on city-specific rules.
+- 🖥 **Sidebar Navigation**: Easy navigation between subscribers, cities, and call logs through an intuitive sidebar menu for efficient data management.
 
-```bash
-ng generate --help
-```
+## 🛠 Technologies
 
-## Building
+## 🛠 Technologies
 
-To build the project run:
+- **Framework**: Angular 19
+- **Language**: TypeScript
+- **UI Components**: Angular Material
+- **Routing**: Angular Router
+- **State Management**: Built-in Angular services
+- **Forms Handling**: Angular Forms
+- **Authentication**: ngx-cookie-service (for managing authentication tokens)
+- **Reactive Programming**: RxJS
+- **Dependency Management**: npm
+- **Styling**: SCSS
+- **Deployment**: Vercel
 
-```bash
-ng build
-```
+You're right! For the frontend, **Node.js** is still required because Angular CLI depends on it, but Angular itself doesn't require Node.js to be specifically tied to the backend.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Here’s the updated version:
 
-## Running unit tests
+## 💡 How to Get Started
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 1. Requirements 📋
 
-```bash
-ng test
-```
+- **Angular CLI** (v19.1 or higher)
+- **Git** (for cloning the repository)
 
-## Running end-to-end tests
+### 2. Installation 🔧
 
-For end-to-end (e2e) testing, run:
+1. Clone the repository:
 
-```bash
-ng e2e
-```
+   ```sh
+   git clone https://github.com/DmytroLavrov/telecom-app-frontend.git
+   cd telecom-app-frontend
+   ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+2. Install dependencies:
 
-## Additional Resources
+   ```sh
+   npm install
+   ```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+3. Start the development server:
+
+   ```sh
+   npm start
+   ```
+
+4. Access the app in your browser:
+   Open `http://localhost:4200` to see the app running.
