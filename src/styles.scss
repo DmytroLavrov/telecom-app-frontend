@@ -1,1 +1,200 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./app/styles/reset";
+@use "./app/styles/vars";
+@use "./app/styles/mixins" as *;
+
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  background-color: var(--page-bg);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  max-width: var(--container-width);
+  width: 100%;
+}
+
+.btn {
+  padding: 10px;
+  background-color: var(--lavender);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--indigo);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s ease-out;
+  }
+}
+
+.search {
+  padding: 10px;
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--silver-mist);
+  color: var(--add-city-text);
+  outline: none;
+  transition: border 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus {
+    border: 1px solid var(--lavender);
+    border-radius: 5px;
+    box-shadow: none;
+  }
+
+  @include media-md {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  @include media-xs {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--silver-mist);
+  color: var(--input-color);
+  outline: none;
+  transition: border 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease;
+
+  &.ng-invalid.ng-touched {
+    border: 1px solid var(--blaze);
+    border-radius: 5px;
+    box-shadow: 0 0 5px var(--blaze);
+  }
+
+  &:focus {
+    border: 1px solid var(--lavender);
+    border-radius: 5px;
+    box-shadow: none;
+  }
+
+  @include media-md {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  @include media-xs {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+.select {
+  padding: 10px;
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--silver-mist);
+  transition: border 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &.ng-invalid.ng-touched {
+    border: 1px solid var(--blaze);
+    border-radius: 5px;
+    box-shadow: 0 0 5px var(--blaze);
+  }
+
+  &:focus {
+    border: 1px solid var(--lavender);
+    border-radius: 5px;
+    box-shadow: none;
+  }
+
+  @include media-md {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  @include media-xs {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.dialog {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: clamp(25px, 1.431rem + 0.49vw, 30px);
+  background-color: var(--dialog-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.title-1 {
+  font-size: clamp(36px, 1.65rem + 1.5vw, 48px);
+  line-height: 48px;
+  font-weight: 500;
+
+  @include media-sm {
+    margin-top: 0;
+    font-size: 28px;
+    line-height: 28px;
+  }
+}
+
+.title-2 {
+  font-size: 28px;
+  font-weight: 600;
+
+  @include media-sm {
+    font-size: 24px;
+  }
+}
+
+.custom-spinner {
+  svg {
+    max-width: none;
+    stroke: var(--accent) !important;
+  }
+}
+
+.loading {
+  height: calc(100vh - 48px - 25px - 14px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include media-sm {
+    height: calc(100vh - 48px - 80px - 89px - 4px - 14px);
+  }
+}
