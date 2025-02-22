@@ -1,0 +1,22 @@
+<div class="confirmation-dialog dialog">
+  <h2 class="confirmation-dialog__title title-2">Confirm Deletion</h2>
+
+  <div class="confirmation-dialog__content">
+    <p class="confirmation-dialog__message">{{ data.message }}</p>
+  </div>
+
+  <div class="confirmation-dialog__actions">
+    <button
+      class="confirmation-dialog__button confirmation-dialog__button--cancel btn"
+      (click)="onCancel()"
+    >
+      Cancel
+    </button>
+    <button
+      class="confirmation-dialog__button confirmation-dialog__button--delete btn"
+      (click)="onConfirm()"
+    >
+      Delete
+    </button>
+  </div>
+</div>
