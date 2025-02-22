@@ -1,0 +1,45 @@
+<aside class="sidebar" [class.closed]="isSidebarClosed()">
+  <div class="sidebar__header">
+    <a class="sidebar__logo" routerLink="/">
+      <div class="sidebar__logo-icon"><img src="./logo.svg" alt="logo" /></div>
+      <div class="sidebar__logo-text">Telecom App</div>
+    </a>
+
+    <button class="sidebar__toggle" (click)="toggleSidebar()">
+      <mat-icon>{{
+        isSidebarClosed() ? "keyboard_arrow_right" : "keyboard_arrow_left"
+      }}</mat-icon>
+    </button>
+  </div>
+
+  <nav class="sidebar__menu">
+    <a
+      class="sidebar__menu-item"
+      routerLink="subscribers"
+      routerLinkActive="selected"
+    >
+      <mat-icon class="sidebar__menu-icon">supervisor_account</mat-icon>
+      <span class="sidebar__menu-text">Subscribers</span>
+    </a>
+    <a
+      class="sidebar__menu-item"
+      routerLink="cities"
+      routerLinkActive="selected"
+    >
+      <mat-icon class="sidebar__menu-icon">location_city</mat-icon>
+      <span class="sidebar__menu-text">Cities</span>
+    </a>
+    <a
+      class="sidebar__menu-item"
+      routerLink="calls"
+      routerLinkActive="selected"
+    >
+      <mat-icon class="sidebar__menu-icon">call</mat-icon>
+      <span class="sidebar__menu-text">Calls</span>
+    </a>
+    <a class="sidebar__menu-item sidebar__menu-item--logout" (click)="logout()">
+      <mat-icon class="sidebar__menu-icon">logout</mat-icon>
+      <span class="sidebar__menu-text">Logout</span>
+    </a>
+  </nav>
+</aside>

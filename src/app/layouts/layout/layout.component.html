@@ -1,0 +1,13 @@
+@if (screenWidth() <= 640) {
+<app-header></app-header>
+} @else {
+<app-sidebar></app-sidebar>
+}
+
+<main class="main">
+  <router-outlet></router-outlet>
+</main>
+
+@if (screenWidth() <= 640) {
+<app-nav-bottom></app-nav-bottom>
+}
