@@ -1,0 +1,93 @@
+@use "../../styles/mixins" as *;
+
+.subscriber-card {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__number {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--lavender);
+  }
+
+  &__details {
+    font-size: clamp(12px, 0.697rem + 0.2vw, 14px);
+    text-decoration: none;
+    color: var(--lavender);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--indigo);
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__phone {
+    font-size: clamp(14px, 0.77rem + 0.39vw, 18px);
+    font-weight: 600;
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__calls-count {
+    font-size: 14px;
+    color: var(--emerald);
+    font-weight: bold;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__btn {
+    width: 24px;
+    height: 24px;
+    transition: color 0.2s ease-in-out;
+
+    mat-icon {
+      width: auto;
+      height: auto;
+      font-size: 24px;
+    }
+
+    &--edit {
+      color: var(--white);
+
+      &:hover {
+        color: var(--silver-mist);
+      }
+    }
+
+    &--delete {
+      color: var(--blaze);
+
+      &:hover {
+        color: var(--vermilion);
+      }
+    }
+
+    @include media-sm {
+      width: 20px;
+      height: 20px;
+
+      mat-icon {
+        font-size: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+<div class="edit-subscriber dialog">
+  <h2 class="edit-subscriber__title title-2">Edit Subscriber</h2>
+
+  <form
+    class="edit-subscriber__form"
+    [formGroup]="subscriberForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="edit-subscriber__field">
+      <label class="edit-subscriber__label" for="phoneNumber"
+        >Phone Number</label
+      >
+      <input
+        class="edit-subscriber__input input"
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        type="text"
+        placeholder="Enter phone number"
+      />
+      @if (subscriberForm.controls['phoneNumber'].invalid &&
+      subscriberForm.controls['phoneNumber'].touched) {
+      <span class="edit-subscriber__error"
+        >Please enter a valid phone number (10 digits)</span
+      >
+      }
+    </div>
+
+    <div class="edit-subscriber__field">
+      <label class="edit-subscriber__label" for="edrpou">EDRPOU</label>
+      <input
+        class="edit-subscriber__input input"
+        id="edrpou"
+        formControlName="edrpou"
+        type="text"
+        placeholder="Enter EDRPOU"
+      />
+      @if (subscriberForm.controls['edrpou'].invalid &&
+      subscriberForm.controls['edrpou'].touched) {
+      <span class="edit-subscriber__error"
+        >EDRPOU must be exactly 8 digits</span
+      >
+      }
+    </div>
+
+    <div class="edit-subscriber__field">
+      <label class="edit-subscriber__label" for="address">Address</label>
+      <input
+        class="edit-subscriber__input input"
+        id="address"
+        formControlName="address"
+        type="text"
+        placeholder="Enter address"
+      />
+      @if (subscriberForm.controls['address'].invalid &&
+      subscriberForm.controls['address'].touched) {
+      <span class="edit-subscriber__error"
+        >Address must be at least 5 characters long</span
+      >
+      }
+    </div>
+
+    <div class="edit-subscriber__buttons">
+      <button
+        class="edit-subscriber__btn edit-subscriber__btn--submit btn"
+        type="submit"
+      >
+        Edit
+      </button>
+      <button
+        class="edit-subscriber__btn edit-subscriber__btn--cancel btn"
+        type="button"
+        (click)="closeDialog()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

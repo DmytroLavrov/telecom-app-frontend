@@ -1,0 +1,39 @@
+<article class="subscriber-card card">
+  <div class="subscriber-card__header">
+    <span class="subscriber-card__number"
+      >№ {{ subscriber()._id.toString().slice(-5) }}</span
+    >
+    <a
+      [routerLink]="['/subscribers', subscriber()._id]"
+      class="subscriber-card__details"
+      >Show Details</a
+    >
+  </div>
+
+  <div class="subscriber-card__body">
+    <h3 class="subscriber-card__phone">
+      {{ subscriber().phoneNumber | phoneNumberFormat }}
+    </h3>
+
+    <div class="subscriber-card__stats">
+      <span class="subscriber-card__calls-count"
+        >Calls: {{ subscriber().callsCount || 0 }}</span
+      >
+
+      <div class="subscriber-card__actions">
+        <button
+          class="subscriber-card__btn subscriber-card__btn--edit"
+          (click)="openEditSubscriberDialog()"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          class="subscriber-card__btn subscriber-card__btn--delete"
+          (click)="deleteSubscriber(subscriber()._id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</article>
