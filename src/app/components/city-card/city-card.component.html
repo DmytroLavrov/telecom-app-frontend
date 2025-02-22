@@ -1,0 +1,52 @@
+<article class="city-card card">
+  <div class="city-card__header">
+    <span class="city-card__number"
+      >№ {{ city()._id.toString().slice(-5) }}</span
+    >
+    <div class="city-card__actions">
+      <button
+        class="city-card__btn city-card__btn--edit"
+        (click)="openEditSubscriberDialog()"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button
+        class="city-card__btn city-card__btn--delete"
+        (click)="deleteCity(city()._id)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <h3 class="city-card__name">{{ city().name }}</h3>
+
+  <div class="city-card__rates">
+    <p class="city-card__rate">
+      <strong>Day Rate:</strong> {{ city().dayRate }}
+    </p>
+    <p class="city-card__rate">
+      <strong>Night Rate:</strong> {{ city().nightRate }}
+    </p>
+  </div>
+
+  <div class="city-card__discounts">
+    <h4 class="city-card__discounts-title">Discounts:</h4>
+    @if (city().discounts.length > 0) {
+    <ul class="city-card__discounts-list">
+      @for (discount of city().discounts; track discount._id) {
+      <li class="city-card__discount">
+        <span class="city-card__discount-duration"
+          >Duration: {{ discount.duration }} mins</span
+        >
+        <span class="city-card__discount-rate"
+          >Discount Rate: {{ discount.discountRate * 100 }}%</span
+        >
+      </li>
+      }
+    </ul>
+    } @else {
+    <div class="city-card__discount-empty">No Discounts</div>
+    }
+  </div>
+</article>

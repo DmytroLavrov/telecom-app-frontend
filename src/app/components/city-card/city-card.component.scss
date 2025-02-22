@@ -1,0 +1,111 @@
+@use "../../styles/mixins" as *;
+
+.city-card {
+  height: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__btn {
+    width: 24px;
+    height: 24px;
+    transition: color 0.2s ease-in-out;
+
+    mat-icon {
+      width: auto;
+      height: auto;
+      font-size: 24px;
+    }
+
+    &--edit {
+      color: var(--white);
+
+      &:hover {
+        color: var(--silver-mist);
+      }
+    }
+
+    &--delete {
+      color: var(--blaze);
+
+      &:hover {
+        color: var(--vermilion);
+      }
+    }
+
+    @include media-sm {
+      width: 20px;
+      height: 20px;
+
+      mat-icon {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__number {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--lavender);
+  }
+
+  &__name {
+    font-size: clamp(16px, 0.9rem + 0.5vw, 20px);
+    font-weight: 600;
+  }
+
+  &__rates {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__rate {
+    font-size: 14px;
+    color: var(--emerald);
+  }
+
+  &__discounts {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    height: 100%;
+  }
+
+  &__discounts-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--blaze);
+  }
+
+  &__discounts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__discount {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding-block: 5px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--charcoal);
+  }
+
+  &__discount-empty {
+    padding-block: 5px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--charcoal);
+  }
+}

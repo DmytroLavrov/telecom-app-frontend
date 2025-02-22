@@ -1,0 +1,117 @@
+<div class="add-city dialog">
+  <h2 class="add-city__title title-2">Add City</h2>
+
+  <form class="add-city__form" [formGroup]="cityForm" (ngSubmit)="onSubmit()">
+    <div class="add-city__field">
+      <label class="add-city__label" for="name">City Name:</label>
+      <input
+        class="add-city__input input"
+        id="name"
+        formControlName="name"
+        type="text"
+        placeholder="Enter city name"
+      />
+      @if (cityForm.controls['name'].invalid &&
+      cityForm.controls['name'].touched) {
+      <span class="add-city__error">
+        City name must be at least 3 characters long</span
+      >
+      }
+    </div>
+
+    <div class="add-city__field">
+      <label class="add-city__label" for="dayRate">Day Rate:</label>
+      <input
+        class="add-city__input input"
+        id="dayRate"
+        formControlName="dayRate"
+        type="number"
+        placeholder="Enter day rate"
+      />
+      @if (cityForm.controls['dayRate'].invalid &&
+      cityForm.controls['dayRate'].touched) {
+      <span class="add-city__error"> Day rate must be a positive number</span>
+      }
+    </div>
+
+    <div class="add-city__field">
+      <label class="add-city__label" for="nightRate">Night Rate:</label>
+      <input
+        class="add-city__input input"
+        id="nightRate"
+        formControlName="nightRate"
+        type="number"
+        placeholder="Enter night rate"
+      />
+      @if (cityForm.controls['nightRate'].invalid &&
+      cityForm.controls['nightRate'].touched) {
+      <span class="add-city__error">Night rate must be a positive number</span>
+      }
+    </div>
+
+    <div class="add-city__field">
+      <h3 class="add-city__discounts-title">Discounts:</h3>
+      <button
+        class="add-city__btn add-city__btn--add-discount"
+        type="button"
+        (click)="addDiscount()"
+        [disabled]="discounts.length >= 3"
+      >
+        Add Discount
+      </button>
+
+      <div formArrayName="discounts">
+        @for (discount of discounts.controls; track i; let i = $index) {
+        <div [formGroupName]="i" class="add-city__discount">
+          <div class="add-city__discount-field">
+            <label class="add-city__label" [for]="'duration-' + i"
+              >Duration (in minutes):</label
+            >
+            <input
+              class="add-city__input input"
+              [id]="'duration-' + i"
+              formControlName="duration"
+              type="number"
+              placeholder="Enter duration"
+            />
+          </div>
+
+          <div class="add-city__discount-field">
+            <label class="add-city__label" [for]="'discountRate-' + i"
+              >Discount Rate (%):</label
+            >
+            <input
+              class="add-city__input input"
+              [id]="'discountRate-' + i"
+              formControlName="discountRate"
+              type="number"
+              placeholder="Enter discount rate"
+            />
+          </div>
+
+          <button
+            type="button"
+            (click)="discounts.removeAt(i)"
+            class="add-city__btn add-city__btn--remove-discount"
+          >
+            Remove Discount
+          </button>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="add-city__buttons">
+      <button class="add-city__btn add-city__btn--submit" type="submit">
+        Create
+      </button>
+      <button
+        class="add-city__btn add-city__btn--cancel"
+        type="button"
+        (click)="closeDialog()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,1 +1,31 @@
-<p>cities works!</p>
+<section class="cities">
+  <h1 class="cities__title title-1">Cities</h1>
+
+  <div class="cities__buttons">
+    <input
+      type="text"
+      class="cities__search search"
+      placeholder="Search city..."
+      (input)="onSearch($event)"
+    />
+    <button class="cities__add btn" (click)="openAddCityDialog()">+ Add</button>
+  </div>
+
+  @if (!isLoading()) {
+  <ul class="cities__list">
+    @for (city of filteredCities(); track city._id) {
+    <app-city-card
+      [city]="city"
+      (cityDeleted)="onCityDeleted($event)"
+      (cityUpdated)="onCityUpdated($event)"
+    />
+    } @empty {
+    <span class="cities__empty">Cities not found</span>
+    }
+  </ul>
+  } @else {
+  <div class="loading">
+    <mat-spinner class="custom-spinner" />
+  </div>
+  }
+</section>
