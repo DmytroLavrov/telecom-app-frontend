@@ -1,0 +1,139 @@
+@use "../../styles/mixins" as *;
+
+.subscriber {
+  padding: 20px;
+  background-color: var(--charcoal);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  &__title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &__card {
+    background-color: var(--black);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+
+    h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--white);
+      font-size: 16px;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__calls-title {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--white);
+  }
+
+  // desktop
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: var(--black);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: clamp(14px, 0.775rem + 0.25vw, 16px);
+
+    th,
+    td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid var(--charcoal);
+    }
+
+    th {
+      background-color: var(--lavender);
+      color: var(--white);
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @include media-sm {
+      display: none;
+    }
+  }
+
+  // tablet/mobile
+  &__list {
+    display: none;
+
+    @include media-sm {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+      background-color: var(--black);
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &__item {
+    padding: 12px;
+    border-bottom: 1px solid var(--charcoal);
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: 0.3s ease-in-out;
+    @include media-xs {
+      font-size: 14px;
+    }
+
+    &:hover {
+      background-color: var(--frosted-glass);
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5px;
+    padding: 6px 0;
+  }
+
+  &__label {
+    font-weight: bold;
+    color: var(--lavender);
+
+    max-width: 90px;
+    overflow: hidden;
+    word-break: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__value {
+    color: var(--white);
+    font-weight: 500;
+    max-width: 130px;
+    overflow: hidden;
+    word-break: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__empty {
+    text-align: center;
+    color: var(--white);
+    margin-top: 20px;
+  }
+}

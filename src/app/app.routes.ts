@@ -7,6 +7,7 @@ import { SubscribersComponent } from './pages/subscribers/subscribers.component'
 import { CitiesComponent } from './pages/cities/cities.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CallsComponent } from './pages/calls/calls.component';
+import { SubscriberDetailsComponent } from './pages/subscriber-details/subscriber-details.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: 'subscribers', component: SubscribersComponent },
+      { path: 'subscribers/:id', component: SubscriberDetailsComponent },
       { path: 'cities', component: CitiesComponent },
       { path: 'calls', component: CallsComponent },
       { path: '', redirectTo: 'subscribers', pathMatch: 'full' },
