@@ -1,0 +1,4 @@
+<mat-icon [ngClass]="data.type === 'success' ? 'success' : 'error'">
+  {{ data.type === "success" ? "check_circle" : "cancel" }}
+</mat-icon>
+<span class="snackbar-message">{{ data.message }}</span>

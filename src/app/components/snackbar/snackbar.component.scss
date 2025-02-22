@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+::ng-deep .mat-mdc-snack-bar-container {
+  background: var(--charcoal);
+}
+
+.snack-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+}
+
+.success {
+  color: var(--emerald);
+}
+
+.error {
+  color: var(--blaze);
+}
