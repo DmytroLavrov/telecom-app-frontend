@@ -6,8 +6,6 @@ Telecom App is a **web application** designed for automating the accounting of l
 
 Check out the live demo of the application here: [**Telecom App - Frontend**](https://telecom-app-frontend.vercel.app/)
 
-Ось як можна доповнити ваш текст, включивши інформацію про дані для авторизації:
-
 To log in and access the demo, use the following **admin credentials**:
 
 - **Email**: admin@telecomapp.com
@@ -22,8 +20,6 @@ These credentials will grant you access to the application for demonstration pur
 - 🌆 **City Management**: Manage cities and tariffs, including viewing, adding, editing, and deleting cities with their respective day/night rates and discounts.
 - 📞 **Call History**: Track and manage call logs, including manually adding new calls, calculating costs, and applying dynamic discounts based on city-specific rules.
 - 🖥 **Sidebar Navigation**: Easy navigation between subscribers, cities, and call logs through an intuitive sidebar menu for efficient data management.
-
-## 🛠 Technologies
 
 ## 🛠 Technologies
 
