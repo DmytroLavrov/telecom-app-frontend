@@ -35,10 +35,6 @@ These credentials will grant you access to the application for demonstration pur
 - **Styling**: SCSS
 - **Deployment**: Vercel
 
-You're right! For the frontend, **Node.js** is still required because Angular CLI depends on it, but Angular itself doesn't require Node.js to be specifically tied to the backend.
-
-Here’s the updated version:
-
 ## 💡 How to Get Started
 
 ### 1. Requirements 📋
