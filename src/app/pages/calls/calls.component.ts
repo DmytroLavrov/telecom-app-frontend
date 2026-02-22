@@ -1,12 +1,12 @@
 import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
-import { CallService } from '../../services/call.service';
-import { ICall } from '../../interfaces/call';
+import { CallService } from '@services/call.service';
+import { ICall } from '@interfaces/call';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PhoneNumberFormatPipe } from '../../pipes/phone-number-format.pipe';
+import { PhoneNumberFormatPipe } from '@pipes/phone-number-format.pipe';
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { DurationFormatPipe } from '../../pipes/duration-format.pipe';
+import { DurationFormatPipe } from '@pipes/duration-format.pipe';
 import { MatDialog } from '@angular/material/dialog';
-import { AddCallComponent } from '../../components/add-call/add-call.component';
+import { AddCallComponent } from '@components/add-call/add-call.component';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -42,18 +42,18 @@ export class CallsComponent {
         s.subscriber.toLowerCase().includes(term) ||
         s.city.toLowerCase().includes(term) ||
         s.duration.toString().includes(term) ||
-        s.timeOfDay.toLowerCase().includes(term)
+        s.timeOfDay.toLowerCase().includes(term),
     );
 
     switch (option) {
       case 'newest':
         sortedCalls.sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
         );
         break;
       case 'oldest':
         sortedCalls.sort(
-          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
         );
         break;
       case 'longest':

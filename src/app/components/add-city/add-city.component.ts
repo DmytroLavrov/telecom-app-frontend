@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject } from '@angular/core';
-import { CityService } from '../../services/city.service';
+import { CityService } from '@services/city.service';
 import {
   FormArray,
   FormBuilder,
@@ -8,8 +8,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { SnackbarService } from '../../services/snackbar.service';
-import { INewCity } from '../../interfaces/city';
+import { SnackbarService } from '@services/snackbar.service';
+import { INewCity } from '@interfaces/city';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -39,7 +39,7 @@ export class AddCityComponent {
   }
 
   createDiscountGroup(
-    discount: { duration?: number; discountRate?: number } = {}
+    discount: { duration?: number; discountRate?: number } = {},
   ) {
     return this.fb.group({
       duration: [

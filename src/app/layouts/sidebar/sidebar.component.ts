@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { AdminService } from '../../services/admin.service';
+import { AdminService } from '@services/admin.service';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({

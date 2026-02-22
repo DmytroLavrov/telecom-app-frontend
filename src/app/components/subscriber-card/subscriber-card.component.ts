@@ -1,14 +1,14 @@
 import { Component, DestroyRef, inject, input, output } from '@angular/core';
-import { ISubscriberCard } from '../../interfaces/subscriber';
+import { ISubscriberCard } from '@interfaces/subscriber';
 import { RouterLink } from '@angular/router';
-import { PhoneNumberFormatPipe } from '../../pipes/phone-number-format.pipe';
+import { PhoneNumberFormatPipe } from '@pipes/phone-number-format.pipe';
 import { MatIconModule } from '@angular/material/icon';
-import { SubscriberService } from '../../services/subscriber.service';
-import { SnackbarService } from '../../services/snackbar.service';
+import { SubscriberService } from '@services/subscriber.service';
+import { SnackbarService } from '@services/snackbar.service';
 import { MatDialog } from '@angular/material/dialog';
-import { EditSubscriberComponent } from '../edit-subscriber/edit-subscriber.component';
+import { EditSubscriberComponent } from '@components/edit-subscriber/edit-subscriber.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from '@components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-subscriber-card',
@@ -65,7 +65,7 @@ export class SubscriberCardComponent {
               next: () => {
                 this.snackbarService.showMessage(
                   'Subscriber deleted successfully',
-                  'success'
+                  'success',
                 );
                 this.subscriberDeleted.emit(id);
               },
@@ -74,7 +74,7 @@ export class SubscriberCardComponent {
                   err?.message || 'An unknown error occurred';
                 this.snackbarService.showMessage(
                   `Error: ${errorMessage}`,
-                  'error'
+                  'error',
                 );
               },
             });

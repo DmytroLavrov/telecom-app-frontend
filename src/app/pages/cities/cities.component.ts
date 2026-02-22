@@ -1,10 +1,10 @@
 import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
-import { CityService } from '../../services/city.service';
-import { ICity } from '../../interfaces/city';
-import { CityCardComponent } from '../../components/city-card/city-card.component';
+import { CityService } from '@services/city.service';
+import { ICity } from '@interfaces/city';
+import { CityCardComponent } from '@components/city-card/city-card.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialog } from '@angular/material/dialog';
-import { AddCityComponent } from '../../components/add-city/add-city.component';
+import { AddCityComponent } from '@components/add-city/add-city.component';
 
 @Component({
   selector: 'app-cities',
@@ -27,7 +27,7 @@ export class CitiesComponent {
     return this.cities().filter(
       (s) =>
         s._id.toLowerCase().includes(term) ||
-        s.name.toLowerCase().includes(term)
+        s.name.toLowerCase().includes(term),
     );
   });
 
@@ -79,8 +79,8 @@ export class CitiesComponent {
   onCityUpdated(updatedCity: ICity) {
     this.cities.set(
       this.cities().map((s) =>
-        s._id === updatedCity._id ? { ...s, ...updatedCity } : s
-      )
+        s._id === updatedCity._id ? { ...s, ...updatedCity } : s,
+      ),
     );
   }
 }

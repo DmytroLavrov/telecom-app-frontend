@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { IAdminLogin, ITokenResponse } from '../interfaces/admin';
+import { IAdminLogin, ITokenResponse } from '@interfaces/admin';
 import { tap } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root',

@@ -6,14 +6,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { CallService } from '../../services/call.service';
-import { SubscriberService } from '../../services/subscriber.service';
-import { CityService } from '../../services/city.service';
-import { INewCall } from '../../interfaces/call';
-import { ISubscriber } from '../../interfaces/subscriber';
-import { ICity } from '../../interfaces/city';
-import { SnackbarService } from '../../services/snackbar.service';
-import { PhoneNumberFormatPipe } from '../../pipes/phone-number-format.pipe';
+import { CallService } from '@services/call.service';
+import { SubscriberService } from '@services/subscriber.service';
+import { CityService } from '@services/city.service';
+import { INewCall } from '@interfaces/call';
+import { ISubscriber } from '@interfaces/subscriber';
+import { ICity } from '@interfaces/city';
+import { SnackbarService } from '@services/snackbar.service';
+import { PhoneNumberFormatPipe } from '@pipes/phone-number-format.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
@@ -113,8 +113,10 @@ export class AddCallComponent {
         if (typeof value === 'string') {
           this.filteredSubscribers.set(
             this.subscribers().filter((subscriber) =>
-              subscriber.phoneNumber.toLowerCase().includes(value.toLowerCase())
-            )
+              subscriber.phoneNumber
+                .toLowerCase()
+                .includes(value.toLowerCase()),
+            ),
           );
         }
       });
@@ -126,8 +128,8 @@ export class AddCallComponent {
         if (typeof value === 'string') {
           this.filteredCities.set(
             this.cities().filter((city) =>
-              city.name.toLowerCase().includes(value.toLowerCase())
-            )
+              city.name.toLowerCase().includes(value.toLowerCase()),
+            ),
           );
         }
       });
@@ -184,7 +186,7 @@ export class AddCallComponent {
     if (startDateObj > endDateObj) {
       this.snackbarService.showMessage(
         'Start date must be earlier than end date!',
-        'error'
+        'error',
       );
       throw new Error('Start date must be earlier than end date!');
     }
@@ -197,10 +199,10 @@ export class AddCallComponent {
       if (startTimeInSeconds >= endTimeInSeconds) {
         this.snackbarService.showMessage(
           'Start time must be earlier than end time on the same date!',
-          'error'
+          'error',
         );
         throw new Error(
-          'Start time must be earlier than end time on the same date!'
+          'Start time must be earlier than end time on the same date!',
         );
       }
     }
@@ -208,13 +210,13 @@ export class AddCallComponent {
     const startDateTime = new Date(
       `${startDate}T${[startHour, startMinute, startSecond]
         .map((n) => String(n).padStart(2, '0'))
-        .join(':')}`
+        .join(':')}`,
     );
 
     const endDateTime = new Date(
       `${endDate}T${[endHour, endMinute, endSecond]
         .map((n) => String(n).padStart(2, '0'))
-        .join(':')}`
+        .join(':')}`,
     );
 
     return (endDateTime.getTime() - startDateTime.getTime()) / 1000;
@@ -246,14 +248,14 @@ export class AddCallComponent {
         this.dialogRef.close(result);
         this.snackbarService.showMessage(
           'Call created successfully!',
-          'success'
+          'success',
         );
       },
       error: (err) => {
         console.error('Error creating call:', err);
         this.snackbarService.showMessage(
           'Failed to create call. Please try again.',
-          'error'
+          'error',
         );
       },
     });

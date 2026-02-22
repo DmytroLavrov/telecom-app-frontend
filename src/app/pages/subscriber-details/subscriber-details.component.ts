@@ -1,12 +1,12 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SubscriberService } from '../../services/subscriber.service';
-import { ISubscriberDetails } from '../../interfaces/subscriber';
-import { SnackbarService } from '../../services/snackbar.service';
+import { SubscriberService } from '@services/subscriber.service';
+import { ISubscriberDetails } from '@interfaces/subscriber';
+import { SnackbarService } from '@services/snackbar.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PhoneNumberFormatPipe } from '../../pipes/phone-number-format.pipe';
+import { PhoneNumberFormatPipe } from '@pipes/phone-number-format.pipe';
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { DurationFormatPipe } from '../../pipes/duration-format.pipe';
+import { DurationFormatPipe } from '@pipes/duration-format.pipe';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -50,7 +50,7 @@ export class SubscriberDetailsComponent {
             console.error('Error loading subscriber details:', err.message);
             this.snackbarService.showMessage(
               'Error loading subscriber details',
-              'error'
+              'error',
             );
             this.router.navigate(['/subscribers']);
           },
