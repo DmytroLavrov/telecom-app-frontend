@@ -4,13 +4,14 @@ import { IAdminLogin, ITokenResponse } from '../interfaces/admin';
 import { tap } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
   private http = inject(HttpClient);
-  private backendUrl = 'https://telecom-app-backend.onrender.com/auth';
+  private backendUrl = `${environment.apiUrl}/auth`;
   private cookieService = inject(CookieService);
   private router = inject(Router);
 
@@ -31,7 +32,7 @@ export class AdminService {
           this.token = val.token;
 
           this.cookieService.set('Token', this.token);
-        })
+        }),
       );
   }
 
