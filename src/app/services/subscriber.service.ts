@@ -7,13 +7,14 @@ import {
   ISubscriberDetails,
 } from '../interfaces/subscriber';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SubscriberService {
   private http = inject(HttpClient);
-  private backendUrl = 'https://telecom-app-backend.onrender.com/subscribers';
+  private backendUrl = `${environment.apiUrl}/subscribers`;
 
   public getSubscribers(): Observable<ISubscriberCard[]> {
     return this.http.get<ISubscriberCard[]>(this.backendUrl).pipe(
@@ -21,9 +22,9 @@ export class SubscriberService {
         console.error('Error fetching subscribers:', err);
         return throwError(
           () =>
-            new Error('An error occurred while fetching the subscribers list')
+            new Error('An error occurred while fetching the subscribers list'),
         );
-      })
+      }),
     );
   }
 
@@ -33,26 +34,28 @@ export class SubscriberService {
         console.error('Error fetching subscriber details:', err);
         return throwError(
           () =>
-            new Error('An error occurred while fetching the subscriber details')
+            new Error(
+              'An error occurred while fetching the subscriber details',
+            ),
         );
-      })
+      }),
     );
   }
 
   public addSubscriber(
-    subscriber: INewSubscriber
+    subscriber: INewSubscriber,
   ): Observable<ISubscriberCard> {
     return this.http.post<ISubscriberCard>(this.backendUrl, subscriber).pipe(
       catchError((err) => {
         console.error('Error adding subscriber:', err);
         return throwError(() => err);
-      })
+      }),
     );
   }
 
   public updateSubscriber(
     id: string,
-    updatedSubscriber: Partial<INewSubscriber>
+    updatedSubscriber: Partial<INewSubscriber>,
   ): Observable<ISubscriber> {
     return this.http
       .put<ISubscriber>(`${this.backendUrl}/${id}`, updatedSubscriber)
@@ -60,7 +63,7 @@ export class SubscriberService {
         catchError((err) => {
           console.error('Error updating subscriber:', err);
           return throwError(() => err);
-        })
+        }),
       );
   }
 
@@ -69,9 +72,9 @@ export class SubscriberService {
       catchError((err) => {
         console.error('Error deleting subscriber:', err);
         return throwError(
-          () => new Error('An error occurred while deleting the subscriber')
+          () => new Error('An error occurred while deleting the subscriber'),
         );
-      })
+      }),
     );
   }
 }

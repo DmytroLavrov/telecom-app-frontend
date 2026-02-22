@@ -2,22 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { ICity, INewCity } from '../interfaces/city';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CityService {
   private http = inject(HttpClient);
-  private backendUrl = 'https://telecom-app-backend.onrender.com/cities';
+  private backendUrl = `${environment.apiUrl}/cities`;
 
   public getCities(): Observable<ICity[]> {
     return this.http.get<ICity[]>(`${this.backendUrl}`).pipe(
       catchError((err) => {
         console.error('Error fetching cities:', err);
         return throwError(
-          () => new Error('An error occurred while fetching the cities list')
+          () => new Error('An error occurred while fetching the cities list'),
         );
-      })
+      }),
     );
   }
 
@@ -26,19 +27,19 @@ export class CityService {
       catchError((err) => {
         console.error('Error adding city:', err);
         return throwError(() => err);
-      })
+      }),
     );
   }
 
   public updateCity(
     id: string,
-    updatedCity: Partial<INewCity>
+    updatedCity: Partial<INewCity>,
   ): Observable<ICity> {
     return this.http.put<ICity>(`${this.backendUrl}/${id}`, updatedCity).pipe(
       catchError((err) => {
         console.error('Error updating city:', err);
         return throwError(() => err);
-      })
+      }),
     );
   }
 
@@ -47,9 +48,9 @@ export class CityService {
       catchError((err) => {
         console.error('Error deleting city:', err);
         return throwError(
-          () => new Error('An error occurred while deleting the city')
+          () => new Error('An error occurred while deleting the city'),
         );
-      })
+      }),
     );
   }
 }
