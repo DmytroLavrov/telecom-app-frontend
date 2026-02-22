@@ -5,9 +5,9 @@ import {
   ISubscriber,
   ISubscriberCard,
   ISubscriberDetails,
-} from '../interfaces/subscriber';
+} from '@interfaces/subscriber';
 import { catchError, Observable, throwError } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root',

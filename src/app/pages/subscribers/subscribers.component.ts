@@ -1,10 +1,10 @@
 import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
-import { SubscriberService } from '../../services/subscriber.service';
-import { ISubscriberCard } from '../../interfaces/subscriber';
-import { SubscriberCardComponent } from '../../components/subscriber-card/subscriber-card.component';
+import { SubscriberService } from '@services/subscriber.service';
+import { ISubscriberCard } from '@interfaces/subscriber';
+import { SubscriberCardComponent } from '@components/subscriber-card/subscriber-card.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialog } from '@angular/material/dialog';
-import { AddSubscriberComponent } from '../../components/add-subscriber/add-subscriber.component';
+import { AddSubscriberComponent } from '@components/add-subscriber/add-subscriber.component';
 
 @Component({
   selector: 'app-subscribers',
@@ -27,7 +27,7 @@ export class SubscribersComponent {
     return this.subscribers().filter(
       (s) =>
         s._id.toLowerCase().includes(term) ||
-        s.phoneNumber.toLowerCase().includes(term)
+        s.phoneNumber.toLowerCase().includes(term),
     );
   });
 
@@ -78,8 +78,8 @@ export class SubscribersComponent {
   onSubscriberUpdated(updatedSubscriber: ISubscriberCard) {
     this.subscribers.set(
       this.subscribers().map((s) =>
-        s._id === updatedSubscriber._id ? { ...s, ...updatedSubscriber } : s
-      )
+        s._id === updatedSubscriber._id ? { ...s, ...updatedSubscriber } : s,
+      ),
     );
   }
 }

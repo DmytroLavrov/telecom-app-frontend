@@ -1,11 +1,11 @@
 import { Component, DestroyRef, inject, input, output } from '@angular/core';
-import { ICity } from '../../interfaces/city';
+import { ICity } from '@interfaces/city';
 import { MatIconModule } from '@angular/material/icon';
-import { CityService } from '../../services/city.service';
-import { SnackbarService } from '../../services/snackbar.service';
+import { CityService } from '@services/city.service';
+import { SnackbarService } from '@services/snackbar.service';
 import { MatDialog } from '@angular/material/dialog';
-import { EditCityComponent } from '../edit-city/edit-city.component';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { EditCityComponent } from '@components/edit-city/edit-city.component';
+import { ConfirmationDialogComponent } from '@components/confirmation-dialog/confirmation-dialog.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -63,14 +63,14 @@ export class CityCardComponent {
               next: () => {
                 this.snackbarService.showMessage(
                   'City deleted successfully',
-                  'success'
+                  'success',
                 );
                 this.cityDeleted.emit(id);
               },
               error: (err: Error) => {
                 this.snackbarService.showMessage(
                   `Error: ${err.message}`,
-                  'error'
+                  'error',
                 );
               },
             });

@@ -6,10 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { INewSubscriber } from '../../interfaces/subscriber';
-import { SubscriberService } from '../../services/subscriber.service';
+import { INewSubscriber } from '@interfaces/subscriber';
+import { SubscriberService } from '@services/subscriber.service';
 import { MatIconModule } from '@angular/material/icon';
-import { SnackbarService } from '../../services/snackbar.service';
+import { SnackbarService } from '@services/snackbar.service';
 
 @Component({
   selector: 'app-add-subscriber',
@@ -49,7 +49,7 @@ export class AddSubscriberComponent {
           this.dialogRef.close(newSubscriber);
           this.snackbarService.showMessage(
             'New subscriber added successfully!',
-            'success'
+            'success',
           );
         },
         error: () => {},

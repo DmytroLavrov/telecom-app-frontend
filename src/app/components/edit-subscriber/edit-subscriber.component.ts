@@ -6,10 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { INewSubscriber, ISubscriber } from '../../interfaces/subscriber';
-import { SubscriberService } from '../../services/subscriber.service';
+import { INewSubscriber, ISubscriber } from '@interfaces/subscriber';
+import { SubscriberService } from '@services/subscriber.service';
 import { MatIconModule } from '@angular/material/icon';
-import { SnackbarService } from '../../services/snackbar.service';
+import { SnackbarService } from '@services/snackbar.service';
 
 @Component({
   selector: 'app-edit-subscriber',
@@ -55,7 +55,7 @@ export class EditSubscriberComponent {
         next: (updatedSubscriber) => {
           this.snackbarService.showMessage(
             'Subscriber updated successfully',
-            'success'
+            'success',
           );
           this.dialogRef.close(updatedSubscriber);
         },

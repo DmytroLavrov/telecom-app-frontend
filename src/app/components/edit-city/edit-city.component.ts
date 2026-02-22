@@ -8,10 +8,10 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ICity, INewCity } from '../../interfaces/city';
-import { CityService } from '../../services/city.service';
+import { ICity, INewCity } from '@interfaces/city';
+import { CityService } from '@services/city.service';
 import { MatIconModule } from '@angular/material/icon';
-import { SnackbarService } from '../../services/snackbar.service';
+import { SnackbarService } from '@services/snackbar.service';
 
 @Component({
   selector: 'app-edit-city',
@@ -37,8 +37,8 @@ export class EditCityComponent {
         this.createDiscountGroup({
           ...discount,
           discountRate: discount.discountRate * 100,
-        })
-      )
+        }),
+      ),
     ),
   });
 
@@ -47,7 +47,7 @@ export class EditCityComponent {
   }
 
   createDiscountGroup(
-    discount: { duration?: number; discountRate?: number } = {}
+    discount: { duration?: number; discountRate?: number } = {},
   ) {
     return this.fb.group({
       duration: [discount.duration, [Validators.required, Validators.min(1)]],
@@ -84,7 +84,7 @@ export class EditCityComponent {
         next: (result) => {
           this.snackbarService.showMessage(
             'City updated successfully',
-            'success'
+            'success',
           );
           this.dialogRef.close(result);
         },

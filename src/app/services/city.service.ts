@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ICity, INewCity } from '../interfaces/city';
+import { ICity, INewCity } from '@interfaces/city';
 import { catchError, Observable, throwError } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root',

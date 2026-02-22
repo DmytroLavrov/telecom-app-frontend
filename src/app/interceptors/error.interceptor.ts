@@ -7,7 +7,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
-import { SnackbarService } from '../services/snackbar.service';
+import { SnackbarService } from '@services/snackbar.service';
 
 @Injectable()
 export class errorInterceptor implements HttpInterceptor {
@@ -15,7 +15,7 @@ export class errorInterceptor implements HttpInterceptor {
 
   intercept(
     req: HttpRequest<any>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -23,7 +23,7 @@ export class errorInterceptor implements HttpInterceptor {
           error.error?.message || 'An unexpected error occurred';
         this.snackbarService.showMessage(errorMessage, 'error');
         return throwError(() => error);
-      })
+      }),
     );
   }
 }
