@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { SnackbarService } from '@services/snackbar.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ITokenResponse } from '@interfaces/admin';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,8 @@ export class LoginComponent {
   private router = inject(Router);
   private snackbarService = inject(SnackbarService);
   private destroyRef = inject(DestroyRef);
+
+  public isLoading = false;
 
   form = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
@@ -38,12 +41,19 @@ export class LoginComponent {
       return;
     }
 
+    this.isLoading = true;
+
     const subscription = this.adminService
       .login({
         email: this.form.value.email!,
         password: this.form.value.password!,
       })
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => {
+          this.isLoading = false;
+        }),
+      )
       .subscribe({
         next: (response: ITokenResponse) => {
           this.router.navigate(['']);
