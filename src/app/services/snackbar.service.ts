@@ -8,7 +8,10 @@ import { SnackbarComponent } from '@components/snackbar/snackbar.component';
 export class SnackbarService {
   private _snackBar = inject(MatSnackBar);
 
-  showMessage(message: string, type: 'success' | 'error' = 'success') {
+  public showMessage(
+    message: string,
+    type: 'success' | 'error' | 'info' = 'success',
+  ): void {
     this._snackBar.openFromComponent(SnackbarComponent, {
       data: { message, type },
       duration: 5000,

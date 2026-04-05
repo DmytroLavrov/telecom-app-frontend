@@ -13,6 +13,19 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 export class SnackbarComponent {
   constructor(
     @Inject(MAT_SNACK_BAR_DATA)
-    public data: { message: string; type: 'success' | 'error' }
+    public data: { message: string; type: 'success' | 'error' | 'info' },
   ) {}
+
+  get iconName(): string {
+    switch (this.data.type) {
+      case 'success':
+        return 'check_circle';
+      case 'error':
+        return 'cancel';
+      case 'info':
+        return 'info';
+      default:
+        return 'info';
+    }
+  }
 }
