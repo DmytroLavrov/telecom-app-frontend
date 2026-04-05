@@ -26,6 +26,7 @@ export class LoginComponent {
   private destroyRef = inject(DestroyRef);
 
   public isLoading = false;
+  private delayTimer?: ReturnType<typeof setTimeout>;
 
   form = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
@@ -43,6 +44,13 @@ export class LoginComponent {
 
     this.isLoading = true;
 
+    this.delayTimer = setTimeout(() => {
+      this.snackbarService.showMessage(
+        'The server is waking up, this may take up to a minute. Please wait a little longer...',
+        'info',
+      );
+    }, 5000);
+
     const subscription = this.adminService
       .login({
         email: this.form.value.email!,
@@ -52,6 +60,8 @@ export class LoginComponent {
         takeUntilDestroyed(this.destroyRef),
         finalize(() => {
           this.isLoading = false;
+
+          clearTimeout(this.delayTimer);
         }),
       )
       .subscribe({
