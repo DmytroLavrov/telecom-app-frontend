@@ -41,7 +41,7 @@ describe('AuthInterceptor', () => {
   });
 
   it('should add an Authorization header when a token is present in AdminService (TC-20)', () => {
-    const fakeToken = 'Bearer valid-jwt-token-123';
+    const fakeToken = 'valid-jwt-token-123';
     adminServiceMock.token = fakeToken;
 
     httpClient.get(testUrl).subscribe();
@@ -50,7 +50,9 @@ describe('AuthInterceptor', () => {
 
     expect(req.request.headers.has('Authorization')).toBeTrue();
 
-    expect(req.request.headers.get('Authorization')).toBe(fakeToken);
+    expect(req.request.headers.get('Authorization')).toBe(
+      `Bearer ${fakeToken}`,
+    );
 
     req.flush({});
   });
