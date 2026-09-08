@@ -55,28 +55,9 @@ export class AddCallComponent {
     subscriber: [null, Validators.required],
     city: [null, Validators.required],
     startDate: ['', Validators.required],
-    startHour: [
-      '',
-      [Validators.required, Validators.min(0), Validators.max(23)],
-    ],
-    startMinute: [
-      '',
-      [Validators.required, Validators.min(0), Validators.max(59)],
-    ],
-    startSecond: [
-      '',
-      [Validators.required, Validators.min(0), Validators.max(59)],
-    ],
+    startTime: ['', Validators.required],
     endDate: ['', Validators.required],
-    endHour: ['', [Validators.required, Validators.min(0), Validators.max(23)]],
-    endMinute: [
-      '',
-      [Validators.required, Validators.min(0), Validators.max(59)],
-    ],
-    endSecond: [
-      '',
-      [Validators.required, Validators.min(0), Validators.max(59)],
-    ],
+    endTime: ['', Validators.required],
   });
 
   ngOnInit() {
@@ -135,31 +116,6 @@ export class AddCallComponent {
       });
   }
 
-  validateTimeInput(event: Event, max: number) {
-    const target = event.target as HTMLInputElement;
-    const value = target.value;
-
-    if (!/^\d*$/.test(value)) {
-      target.value = value.slice(0, -1);
-      return;
-    }
-
-    const numericValue = Number(value);
-
-    if (numericValue > max) {
-      target.value = value.slice(0, -1);
-    }
-  }
-
-  formatTime(event: Event) {
-    const target = event.target as HTMLInputElement;
-    let value = target.value.trim();
-
-    if (value !== '' && Number(value) < 10) {
-      target.value = `0${Number(value)}`;
-    }
-  }
-
   displayFn(subscriber: ISubscriber): string {
     return subscriber ? subscriber.phoneNumber : '';
   }
@@ -168,17 +124,13 @@ export class AddCallComponent {
     return city ? city.name : '';
   }
 
+  private timeToSeconds(time: string): number {
+    const [h, m, s] = time.split(':').map(Number);
+    return h * 3600 + m * 60 + (s || 0);
+  }
+
   private calculateDuration(): number {
-    const {
-      startDate,
-      startHour,
-      startMinute,
-      startSecond,
-      endDate,
-      endHour,
-      endMinute,
-      endSecond,
-    } = this.callForm.value;
+    const { startDate, startTime, endDate, endTime } = this.callForm.value;
 
     const startDateObj = new Date(startDate);
     const endDateObj = new Date(endDate);
@@ -192,9 +144,8 @@ export class AddCallComponent {
     }
 
     if (startDate === endDate) {
-      const startTimeInSeconds =
-        startHour * 3600 + startMinute * 60 + startSecond;
-      const endTimeInSeconds = endHour * 3600 + endMinute * 60 + endSecond;
+      const startTimeInSeconds = this.timeToSeconds(startTime);
+      const endTimeInSeconds = this.timeToSeconds(endTime);
 
       if (startTimeInSeconds >= endTimeInSeconds) {
         this.snackbarService.showMessage(
@@ -207,17 +158,8 @@ export class AddCallComponent {
       }
     }
 
-    const startDateTime = new Date(
-      `${startDate}T${[startHour, startMinute, startSecond]
-        .map((n) => String(n).padStart(2, '0'))
-        .join(':')}`,
-    );
-
-    const endDateTime = new Date(
-      `${endDate}T${[endHour, endMinute, endSecond]
-        .map((n) => String(n).padStart(2, '0'))
-        .join(':')}`,
-    );
+    const startDateTime = new Date(`${startDate}T${startTime}`);
+    const endDateTime = new Date(`${endDate}T${endTime}`);
 
     return (endDateTime.getTime() - startDateTime.getTime()) / 1000;
   }
@@ -233,13 +175,7 @@ export class AddCallComponent {
     const newCall: INewCall = {
       subscriber: formValue.subscriber._id,
       city: formValue.city._id,
-      date: `${formValue.startDate}T${[
-        formValue.startHour,
-        formValue.startMinute,
-        formValue.startSecond,
-      ]
-        .map((n) => String(n).padStart(2, '0'))
-        .join(':')}`,
+      date: `${formValue.startDate}T${formValue.startTime}`,
       duration: this.calculateDuration(),
     };
 
