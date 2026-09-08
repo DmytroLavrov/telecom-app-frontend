@@ -32,9 +32,20 @@
   }
 
   &__input {
-    &[type="date"]::-webkit-calendar-picker-indicator {
+    &[type="date"]::-webkit-calendar-picker-indicator,
+    &[type="time"]::-webkit-calendar-picker-indicator {
       color-scheme: dark;
       cursor: pointer;
+    }
+
+    &[type="time"] {
+      color-scheme: dark;
+    }
+
+    &.ng-invalid.ng-touched {
+      border: 1px solid var(--blaze);
+      border-radius: 5px;
+      box-shadow: 0 0 5px var(--blaze);
     }
   }
 
@@ -46,33 +57,6 @@
 
   &__input.ng-invalid.ng-touched + &__error {
     display: block;
-  }
-
-  &__time-input {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-  }
-
-  &__time {
-    @include input-number;
-
-    width: 30%;
-    text-align: center;
-
-    &.ng-invalid.ng-touched {
-      border: 1px solid var(--blaze);
-      border-radius: 5px;
-      box-shadow: 0 0 5px var(--blaze);
-    }
-
-    @include media-md {
-      font-size: 0.9rem;
-    }
-
-    @include media-xs {
-      font-size: 0.85rem;
-    }
   }
 
   &__buttons {
